@@ -72,6 +72,8 @@ h6 {
 
 body {
   background-color: #fff;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 
 .lock body {
@@ -80,6 +82,10 @@ body {
       touch-action: none;
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
+}
+
+.loaded body {
+  opacity: 1;
 }
 
 .wrapper {
@@ -274,6 +280,40 @@ body {
 }
 */
 
+.main {
+  background: #3ddabe url("../img/main/bg-main.svg") 0 0 repeat;
+  -webkit-animation: bg-pan-left 35s linear infinite;
+          animation: bg-pan-left 35s linear infinite;
+}
+
+@-webkit-keyframes bg-pan-left {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 0%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes bg-pan-left {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 0%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
 .main__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -281,10 +321,6 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.main__container_wide {
-  background: url("../img/main/bg02.svg") right bottom no-repeat, url("../img/main/bg01.svg") right bottom no-repeat;
 }
 
 .main__column {
@@ -424,7 +460,7 @@ body {
 }
 
 .work__items:not(:last-child) {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.875rem;
 }
 
 .work__item {
@@ -434,7 +470,14 @@ body {
 
 .work__image-ibg {
   overflow: hidden;
-  padding-bottom: 71.4285714286%;
+  aspect-ratio: 280/205;
+}
+
+.work__image-ibg img {
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 .work__footer {
@@ -1347,6 +1390,12 @@ body {
   .actions-column-main__grey-button:hover {
     background-color: #6bffe4;
     color: #fff;
+  }
+
+  .work__image-ibg:hover img {
+    -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+            transform: scale(1.05);
   }
 
   .testimonials__item:hover {
